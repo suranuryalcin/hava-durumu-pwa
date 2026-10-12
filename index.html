@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1976d2">
+  <meta name="description" content="Open-Meteo API ile hava durumu tahmini">
+  <title>Hava Durumu</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="weather-bg.css">
+</head>
+<body>
+  <!-- Arka plan animasyon katmanı -->
+  <div id="bg-layer" class="bg-clear">
+    <div class="bg-content"></div>
+  </div>
+
+  <!-- Mevcut içerik -->
+  <div class="app-content">
+    <header>...</header>
+    <!-- ... geri kalan her şey -->
+  </div>
+
+  <header>
+    <h1>🌤️ Hava Durumu</h1>
+    <button id="theme-toggle" aria-label="Tema değiştir">🌙</button>
+  </header>
+
+  <!-- Çevrimdışı uyarı banner'ı -->
+  <div id="offline-banner" class="offline-banner hidden">
+    ⚠️ İnternet bağlantısı yok. Güncel veriler alınamıyor.
+  </div>
+
+  <!-- Arama ve konum bölümü -->
+  <section class="search-section">
+    <div class="search-box">
+      <input
+        type="text"
+        id="city-input"
+        placeholder="Şehir adı yazın (örn: İstanbul)"
+        autocomplete="off"
+      >
+      <button id="search-btn">Ara</button>
+    </div>
+    <button id="location-btn" class="location-btn">
+      📍 Konumumu Kullan
+    </button>
+  </section>
+
+  <!-- Hata mesajı -->
+  <div id="error-message" class="error hidden"></div>
+
+  <!-- Yükleniyor -->
+  <div id="loading" class="loading hidden">Yükleniyor...</div>
+
+  <!-- Güncel hava durumu -->
+  <section id="current-weather" class="current-weather hidden">
+    <h2 id="current-city">-</h2>
+    <div class="current-main">
+      <div class="current-icon" id="current-icon">-</div>
+      <div class="current-temp" id="current-temp">-°C</div>
+    </div>
+    <p id="current-desc" class="current-desc">-</p>
+    <div class="current-details">
+      <div class="detail">
+        <span class="detail-label">💧 Nem</span>
+        <span class="detail-value" id="current-humidity">-%</span>
+      </div>
+      <div class="detail">
+        <span class="detail-label">💨 Rüzgâr</span>
+        <span class="detail-value" id="current-wind">- km/s</span>
+      </div>
+    </div>
+    <p class="updated" id="last-updated">Son güncelleme: -</p>
+  </section>
+
+  <!-- 5 günlük tahmin -->
+  <section id="forecast" class="forecast hidden">
+    <h2>5 Günlük Tahmin</h2>
+    <div id="forecast-list" class="forecast-list"></div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
